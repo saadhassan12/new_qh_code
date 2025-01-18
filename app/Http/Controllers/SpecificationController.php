@@ -78,14 +78,10 @@ public function delete($id)
 //user side showing detail
 
 public function show($id)
-
 {
-    $product = Product::findOrFail($id);
-  
+    $product = Product::with('productType')->findOrFail($id);
     $specifications = Specification::where('product_model', $product->product_model)->get();
-
-   // $data = Specification::where()->all();
-    return view('partials.specification', compact('specifications'));
+    return view('partials.specification', compact('specifications','product'));
 }
 
 public function detail($id)

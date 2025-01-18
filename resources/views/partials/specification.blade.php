@@ -1,135 +1,173 @@
 @extends('layout.master')
 @section('content')
-<div class="container-md bootdey-products-list">
-    <div class="row gx-0">
-        <div class="col-sm-3">
-            <div class="sidebar">
-                <!-- Consumer Category -->
-                <div class="main-category" onclick="toggleFilters('filters1', 'filters2')">
-                    Consumer
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <div id="filters1" style="display: none; padding-left: 20px;">
-                    @php
-                        $comsumer_tpye_products = getProductTypes(\App\Models\ProductType::CONSUMER_TYPE);
-                    @endphp
-                    @foreach($comsumer_tpye_products as $product)
-                        <a href="{{ route('product-list', ['id' => $product->id]) }}">{{ $product->type_name }}</a><br>
-                    @endforeach
-                </div>
 
-                <!-- Professional Category -->
-                <div class="main-category" onclick="toggleFilters('filters2', 'filters1')">
-                    Professional
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <div id="filters2" style="display: none; padding-left: 20px;">
-                    @php
-                        $professional_tpye_products = getProductTypes(\App\Models\ProductType::PROFESSIONAL_TYPE);
-                    @endphp
-                    @foreach($professional_tpye_products as $product)
-                        <a href="{{ route('product-list', ['id' => $product->id]) }}">{{ $product->type_name }}</a><br>
-                    @endforeach
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart Page</title>
+    <link rel="stylesheet" href="{{ asset('/assets/css/product.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+
+<body>
+    <div class="product-container row mx-auto">
+        <div class="col-md-5 product-image">
+            <img src="{{ asset(  $product->image_url) }}" alt="bulb">
+        </div>
+        <div class="col-md-7 product-details">
+            <h1 class="product-title">{{$product->product_model}}</h1>
+            <p class="quintity">1 Year Warranty</p>
+            <div class="order-wrapper">
+                <p class="bulk-order">Bulk Order</p>
+            </div>
+            <div class="col-md-12">
+                <div class="btn-wrapper mt-4">
+                    <div class="dropdown">
+                        <input class="btn dropdown-spec dropdown-toggle" value="{{$product->productType->type_name}}">
+                    </div>
+                    <div class="d-flex">
+                        <div class="form-group description">
+                            <label for="exampleFormControlTextarea1" class="label">Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-             
-       
-        <div class="col-sm-9" id="js-product-listing">
-            {{-- <h1 class="consumer-heading py-4 px-0"> {{$product->productType->type_name}}</h1> --}}
-            <div class="row flex-wrap justify-content-start p-0">
-          <h1 class="consumer-heading py-4">{{ $specifications->first()->product_model ?? ''}}</h1>
-
-           
-                {{-- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col-6 product-cards">
-                    <div class="consumer-sub-content">
-                        <a href="{{ route('single-product') }}">
-                            <h3 class="consumer-sub-link">A55/A60 A2B Series with 3 Watt</h3>
-                            <div class="consumer-sub-img">
-                                <img src="https://orionlightingpvtltd.com/storage/images/products/1719819945_1.png"
-                                    alt="">
-                            </div>
-                        </a>
-                    </div>
-                </div> --}}
-             
-                @foreach ($specifications as $product )
-                    
-               
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col-6 product-cards">
-                    <div class="consumer-sub-content">
-                        <a href="{{ route('detail',[ 'id'=>$product->id]) }}">
-                            <h3 class="consumer-sub-link">{{$product->type}}</h3>
-                            <div class="consumer-sub-img">
-                                {{-- <img src="https://orionlightingpvtltd.com/storage/images/products/1719821434_1.png" --}}
-                                    {{-- alt=""> --}}
-                                    <img src="{{ asset('storage/images/products/' . $product->image_url) }}" alt="Product Image">
-
-
-            {{-- <img src="{{ !empty($product->image_url) ? $product->image_url : asset('storage/images/products') }}"> --}}
-
-                            </div>
-                        </a>
+            <div class="main-wrapper">
+                <div>
+                    <p class="quantity mt-4">Quantity</p>
+                    <div class="input-group" style="max-width: 150px;">
+                        <button class="btn btn-outline-secondary" type="button" id="button-decrement">-</button>
+                        <input type="text" class="form-control text-center" value="1" id="quantity">
+                        <button class="btn btn-outline-secondary" type="button" id="button-increment">+</button>
                     </div>
                 </div>
-                @endforeach
-
-                {{-- <div><h1> data not found</h1></div> --}}
-              
-                 {{-- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col-6 product-cards">
-                    <div class="consumer-sub-content">
-                        <a href="{{ route('single-product') }}">
-                            <h3 class="consumer-sub-link">A2B-A55-5W with 5 Watt</h3>
-                            <div class="consumer-sub-img">
-                                <img src="https://orionlightingpvtltd.com/storage/images/products/1719821450_1.png"
-                                    alt="">
-                            </div>
-                        </a>
-                    </div>
-                </div> --}}
-                {{-- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col-6 product-cards">
-                    <div class="consumer-sub-content">
-                        <a href="{{ route('single-product') }}">
-                            <h3 class="consumer-sub-link">A2B-A60-3W with 3 Watt</h3>
-                            <div class="consumer-sub-img">
-                                <img src="https://orionlightingpvtltd.com/storage/images/products/1719821467_1.png"
-                                    alt="">
-                            </div>
-                        </a>
-                    </div>
-                </div> --}}
-                {{-- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col-6 product-cards">
-                    <div class="consumer-sub-content">
-                        <a href="{{ route('single-product') }}">
-                            <h3 class="consumer-sub-link">A2B-A60-5W with 5 Watt</h3>
-                            <div class="consumer-sub-img">
-                                <img src="https://orionlightingpvtltd.com/storage/images/products/1719821496_1.png"
-                                    alt="">
-                            </div>
-                        </a>
-                    </div>
-                </div> --}}
-
+            </div>
+            <div class="mt-4">
+                <button class="cart" id="add-to-cart" data-product-id="{{ $product->id }}">Add to Cart</button>
+            </div>
+            <div class="specification-wrapper">
+                <p class="quintity">Specifications</p>
+                <table class="table table-bordered">
+                    <thead class="table-header">
+                        <tr>
+                            <th>Model</th>
+                            <th>Wattage</th>
+                            <th>Initial Lumens</th>
+                            <th>Stable Lumens</th>
+                            <th>RA</th>
+                            <th>Beam Angle</th>
+                            <th>Life</th>
+                            <th>Lamp Size H1</th>
+                            <th>Lamp Size H2</th>
+                            <th>Lamp Size D</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($specifications as $product)
+                        <tr>
+                            <td>{{ $product->type }}</td>
+                            <td>{{ $product->wattage }}</td>
+                            <td>{{ $product->initial_lumen }}</td>
+                            <td>{{ $product->stable_lumen }}</td>
+                            <td>{{ $product->ra }}</td>
+                            <td>{{ $product->beam_angle }}</td>
+                            <td>{{ $product->guarantee }}</td>
+                            <td>{{ $product->lamp_size_h1 }}</td>
+                            <td>{{ $product->lamp_size_h2 }}</td>
+                            <td>{{ $product->lamp_size_d }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
-
-
+    <div class="container mt-4">
+        <div class="custom-card-slider">
+            <div class="custom-card-wrapper">
+                @foreach ($specifications as $product )
+                <div class="custom-card custom-card-product" data-product-id="{{ $product->id }}">
+                    <img src="{{ asset('storage/images/products/' . $product->image_url) }}" alt="Product Image">
+                    <h5>{{$product->type}}</h5>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</body>
 @endsection
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Function to toggle the visibility of category filters
-    function toggleFilters(showId, hideId) {
-        // Hide the other filter list if it is visible
-        var hideFilters = document.getElementById(hideId);
-        if (hideFilters.style.display === 'block') {
-            hideFilters.style.display = 'none';
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+        const decrementButton = document.getElementById('button-decrement');
+        const incrementButton = document.getElementById('button-increment');
+        const quantityInput = document.getElementById('quantity');
+        const exampleFormControlTextarea1 = document.getElementById('exampleFormControlTextarea1');
+        const addToCartBtn = document.getElementById('add-to-cart');
+        const cards = document.querySelectorAll('.custom-card-product');
 
-        // Toggle the visibility of the clicked filter
-        var filters = document.getElementById(showId);
-        filters.style.display = (filters.style.display === 'none') ? 'block' : 'none';
-    }
+
+
+        incrementButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+        decrementButton.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        addToCartBtn.addEventListener('click', () => {
+            const productId = addToCartBtn.getAttribute('data-product-id');
+            const quantity = quantityInput.value;
+            const exampleFormControlTextarea = exampleFormControlTextarea1.value;
+            fetch('/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        quantity: quantity,
+                        exampleFormControlTextarea: exampleFormControlTextarea
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const productId = card.getAttribute('data-product-id');
+
+                fetch('/cart/save', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        },
+                        body: JSON.stringify({
+                            product_id: productId,
+                            quantity: 1
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message); // Show success message
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

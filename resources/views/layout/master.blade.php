@@ -3,15 +3,16 @@
     <link rel="icon" type="image/x-icon" class ="logo" href="{{ asset('assets/images/QH-logo-remove.png') }}">
 
 @include('layout.header')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<body style ="overflow-x: hidden;">
+
+<body style ="overflow-x: hidden; width: 100%;">
     @include('layout.nav')
     {{--content starts here--}}
     <div class="container-fluid p-0">
     @yield('content')
     </div>
     @include('layout.footer')
-
 
 
 
