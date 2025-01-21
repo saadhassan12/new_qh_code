@@ -1,12 +1,13 @@
-
-
 <!-- CSS for WhatsApp Icon -->
 <style>
     .whatsapp-float {
         position: fixed;
-        bottom: 20px; /* Distance from the bottom */
-        right: 20px; /* Distance from the right */
-        background-color: #25d366; /* WhatsApp green color */
+        bottom: 20px;
+        /* Distance from the bottom */
+        right: 20px;
+        /* Distance from the right */
+        background-color: #25d366;
+        /* WhatsApp green color */
         color: white;
         font-size: 24px;
         width: 50px;
@@ -16,7 +17,8 @@
         align-items: center;
         justify-content: center;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-        z-index: 1000; /* Ensure it stays above other elements */
+        z-index: 1000;
+        /* Ensure it stays above other elements */
         text-decoration: none;
     }
 
@@ -81,7 +83,7 @@
             </div>
             <div class="col-md-4 col-12 infor-left px-2">
                 <h3>QH Lighting Co, China</h3>
-             
+
                 <h4>
                     <span>No. 9, Shunde Lighting Industrial Zone, Shunde District, Foshan, Guangdong, China</span>
                 </h4><br>
@@ -89,28 +91,28 @@
                     width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-             <div class="col-md-3 col-12 infor-left px-2">
+            <div class="col-md-3 col-12 infor-left px-2">
                 <h3>West Light Company</h3>
                 <h5>042 37510711</h5>
                 <p>
                     <a href="mailto:example@email.com" style="word-break: break-all;">info@qhlightingpakistan.com</a>
                 </p>
-              <h4>
-    <span>LAL BADSHAH ROAD, Multan Rd, Khanpur, Lahore, Punjab 53710</span>
-</h4><br>
-<iframe 
-    src="https://www.google.com/maps?q=LAL%20BADSHAH%20ROAD%2C%20Multan%20Rd%2C%20Khanpur%2C%20Lahore%2C%20Punjab%2053710&output=embed" 
-    width="300" height="200" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+                <h4>
+                    <span>LAL BADSHAH ROAD, Multan Rd, Khanpur, Lahore, Punjab 53710</span>
+                </h4><br>
+                <iframe
+                    src="https://www.google.com/maps?q=LAL%20BADSHAH%20ROAD%2C%20Multan%20Rd%2C%20Khanpur%2C%20Lahore%2C%20Punjab%2053710&output=embed"
+                    width="300" height="200"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
-          <!-- WhatsApp Floating Icon -->
+            <!-- WhatsApp Floating Icon -->
             <a href="https://wa.me/#" target="_blank" class="whatsapp-float">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-            <i class="fab fa-whatsapp" ></i>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+                <i class="fab fa-whatsapp"></i>
             </a>
             <div class="clearfix"></div>
         </div>

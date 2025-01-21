@@ -24,6 +24,7 @@
             border-radius: 5px;
             overflow: hidden;
         }
+
         .form-container {
             background-color: var(--e-global-color-vamtam_accent_5) !important;
             margin: 0px 0100px 0px 0px !important;
@@ -32,9 +33,11 @@
             box-shadow: 10px 7px 0px 0px #005b96 !important;
 
         }
+
         .form-container h3 {
             color: #000;
         }
+
         .form-container .form-control {
             border-radius: 16px;
             padding: 15px;
@@ -122,7 +125,7 @@
                 <div class="col-md-6">
                     <div class="map-container mb-4">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13604.505319540213!2d74.33598639999999!3d31.5203698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39191c91781dff69%3A0x9ba8b2c1a4b1a12!2sGulberg%20III%2C%20Lahore%2C%20Punjab!5e0!3m2!1sen!2s!4v1673050657596!5m2!1sen!2s"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1692.6194859351736!2d113.1615243!3d22.8088828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3402e52191c5395d%3A0x56b5a5142e4cd8b7!2sNo.%209%2C%20Shunde%20Lighting%20Industrial%20Zone%2C%20Shunde%20District%2C%20Foshan%2C%20Guangdong%2C%20China!5e0!3m2!1sen!2s!4v1673050657596!5m2!1sen!2s"
                             width="100%"
                             height="100%"
                             allowfullscreen=""

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cart Page</title>
+    <title>Cart Page</title>
     <link rel="stylesheet" href="{{ asset('/assets/css/product.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -12,20 +12,38 @@
 <body>
     <div class="product-container row mx-auto">
         <div class="col-md-5 product-image">
-            <img src="{{ asset(  $product->image_url) }}" alt="bulb">
+            <img src="{{ asset($product->image_url) }}" alt="bulb">
         </div>
         <div class="col-md-7 product-details">
-            <h1 class="product-title">{{$product->product_model}}</h1>
+            <h1 class="product-title">{{ $product->product_model }}</h1>
             <p class="quintity">1 Year Warranty</p>
             <div class="order-wrapper">
-                <p class="bulk-order">Bulk Order</p>
+                <a href="/contact-us" class="bulk-order">Bulk Order</a>
             </div>
             <div class="col-md-12">
                 <div class="btn-wrapper mt-4">
                     <div class="dropdown">
-                        <input class="btn dropdown-spec dropdown-toggle" value="{{$product->productType->type_name}}">
+                        <button class="btn dropdown-spec dropdown-toggle" type="button" id="specificationsDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Color Temperature
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="specificationsDropdown">
+                            <li><a class="dropdown-item dropdown-item-specifications" href="#" data-value="3000K">3000K</a></li>
+                            <li><a class="dropdown-item dropdown-item-specifications" href="#" data-value="4000K">4000K</a></li>
+                            <li><a class="dropdown-item dropdown-item-specifications" href="#" data-value="6500K">6500K</a></li>
+                        </ul>
                     </div>
                     <div class="d-flex">
+                        <div class="dropdown">
+                            <button class="btn dropdown-spec dropdown-toggle" type="button" id="cardTypeDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Cap Type
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="cardTypeDropdown">
+                                <li><a class="dropdown-item dropdown-item-cap" href="#" data-value="B22">B22</a></li>
+                                <li><a class="dropdown-item dropdown-item-cap" href="#" data-value="E27">E27</a></li>
+                            </ul>
+                        </div>
                         <div class="form-group description">
                             <label for="exampleFormControlTextarea1" class="label">Description</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -40,6 +58,20 @@
                         <button class="btn btn-outline-secondary" type="button" id="button-decrement">-</button>
                         <input type="text" class="form-control text-center" value="1" id="quantity">
                         <button class="btn btn-outline-secondary" type="button" id="button-increment">+</button>
+                    </div>
+                </div>
+                <div>
+                    <p class="quintity mt-4">Select Model</p>
+                    <div>
+                        <button class="btn select-modal-btn-dropdown dropdown-toggle" type="button" id="modelDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Models
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="modelDropdown">
+                            @foreach ($specifications as $product)
+                            <li><a class="dropdown-item" href="#">{{$product->type}}</a></li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -83,20 +115,24 @@
             </div>
         </div>
     </div>
+
     <div class="container mt-4">
         <div class="custom-card-slider">
             <div class="custom-card-wrapper">
-                @foreach ($specifications as $product )
+                @foreach ($specifications as $product)
                 <div class="custom-card custom-card-product" data-product-id="{{ $product->id }}">
                     <img src="{{ asset('storage/images/products/' . $product->image_url) }}" alt="Product Image">
-                    <h5>{{$product->type}}</h5>
+                    <h5>{{ $product->type }}</h5>
                 </div>
                 @endforeach
             </div>
         </div>
     </div>
+
 </body>
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const decrementButton = document.getElementById('button-decrement');
@@ -105,8 +141,6 @@
         const exampleFormControlTextarea1 = document.getElementById('exampleFormControlTextarea1');
         const addToCartBtn = document.getElementById('add-to-cart');
         const cards = document.querySelectorAll('.custom-card-product');
-
-
 
         incrementButton.addEventListener('click', () => {
             let currentValue = parseInt(quantityInput.value);
@@ -119,31 +153,59 @@
             }
         });
 
-        addToCartBtn.addEventListener('click', () => {
-            const productId = addToCartBtn.getAttribute('data-product-id');
-            const quantity = quantityInput.value;
-            const exampleFormControlTextarea = exampleFormControlTextarea1.value;
-            fetch('/cart/add', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    },
-                    body: JSON.stringify({
-                        product_id: productId,
-                        quantity: quantity,
-                        exampleFormControlTextarea: exampleFormControlTextarea
-                    }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    window.location.reload();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+        let selectedValuespecifications = '';
+        let selectedValuecap = '';
+        document.querySelectorAll('.dropdown-item-specifications').forEach(item => {
+            item.addEventListener('click', function(event) {
+                selectedValuespecifications = event.target.getAttribute('data-value');
+                document.getElementById('specificationsDropdown').textContent = selectedValuespecifications;
+            });
         });
+
+        document.querySelectorAll('.dropdown-item-cap').forEach(item => {
+            item.addEventListener('click', function(event) {
+                selectedValuecap = event.target.getAttribute('data-value');
+                document.getElementById('cardTypeDropdown').textContent = selectedValuecap;
+            });
+        });
+
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', () => {
+                const productId = addToCartBtn.getAttribute('data-product-id');
+                const quantity = quantityInput ? quantityInput.value : 1;
+                const exampleFormControlTextarea = exampleFormControlTextarea1 ? exampleFormControlTextarea1.value : '';
+                fetch('/cart/add', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        },
+
+                        body: JSON.stringify({
+                            product_id: productId,
+                            quantity: quantity,
+                            description: exampleFormControlTextarea,
+                            specifications_type: selectedValuespecifications,
+                            cap_type: selectedValuecap
+                        }),
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            return Promise.reject('Failed to add item to the cart.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        alert(data.message);
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error adding the product to your cart. Please try again later.');
+                    });
+            });
+        }
+
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 const productId = card.getAttribute('data-product-id');
@@ -170,4 +232,3 @@
         });
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

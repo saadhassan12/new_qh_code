@@ -11,20 +11,21 @@ class CartController extends Controller
     //
     public function addToCart(Request $request)
     {
-
         $validated = $request->validate([
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
+            'description' => 'required|string',
+            'specifications_type' => 'required|string',
+            'cap_type' => 'required|string',
         ]);
-
         $order = Order::create([
             'product_id' => $validated['product_id'],
             'quantity' => $validated['quantity'],
             'status' => 'pending',
-            'description' => $request->exampleFormControlTextarea,
-
+            'description' =>  $validated['description'],
+            'specifications_type' =>  $validated['specifications_type'],
+            'cap_type' =>  $validated['cap_type'],
         ]);
-
         return response()->json(['message' => 'Product added to cart successfully!', 'order' => $order]);
     }
     public function save(Request $request)
@@ -33,13 +34,10 @@ class CartController extends Controller
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
         ]);
-
-        // Save the product to the cart table
         Order::create([
             'product_id' => $validated['product_id'],
             'quantity' => $validated['quantity'],
         ]);
-
         return response()->json(['message' => 'Product added to cart successfully!']);
     }
     public function deleteOrder($id)
@@ -70,10 +68,8 @@ class CartController extends Controller
             'country' => 'required|string|max:255',
             'payment_method' => 'required|string',
         ]);
-        dd($request);
 
         $data =  Checkout::create($request->all());
-        dd($data);
         return redirect()->back()->with('success', 'Checkout data saved successfully!');
     }
 }

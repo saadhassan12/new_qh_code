@@ -24,7 +24,7 @@
     }
 </style>
 <section class="header">
-    <div class="container-fluid p-0">
+    <div class="container-fluid">
         <div class="row align-items-start">
             <div class="col-md-12 p-0">
                 <div class="header-menu d-flex" id="querydata">
