@@ -169,7 +169,7 @@
         </div>
       </div>
       <div class="col-md-5 mb-4">
-        <h2 class="product-heading">Consumer</h2>
+        <h2 class="product-heading">Consumersss</h2>
         <p class="product-text">Explore QH’s wide range of high-quality consumer lights, from LED bulbs to all kind of consumer lights and find the perfect lighting for your space. Visit now to brighten your world and make your purchase today!</p>
         <a href="product/products/consumer" class="discover-btn">Discover Now</a>
       </div>
