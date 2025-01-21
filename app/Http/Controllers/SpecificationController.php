@@ -80,6 +80,7 @@ public function delete($id)
 public function show($id)
 {
     $product = Product::with('productType')->findOrFail($id);
+
     $specifications = Specification::where('product_model', $product->product_model)->get();
     return view('partials.specification', compact('specifications','product'));
 }
