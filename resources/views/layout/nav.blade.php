@@ -78,7 +78,6 @@
     .navbar-toggler {
         border: none;
     }
-
     /* Responsive Adjustments */
     @media (max-width: 992px) {
         .web-links {
@@ -142,6 +141,7 @@
             top: 5px;
             right: 5px;
         }
+
     }
 
     .navbar-toggler-icon {
@@ -243,6 +243,13 @@
         .price{
             font-size: 12px;
             font-weight: 400;
+        }
+        @media only screen and (max-width: 768px) {
+            .heading-content{
+                font-size: 14px !important;
+                 font-weight: 600;
+
+            }
         }
 </style>
 <section class="header">

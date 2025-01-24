@@ -11,11 +11,10 @@
   <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
 
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'> 
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <style>
-    *{
+    /* *{
 	margin:0;
 	padding:0;
 	-webkit-user-select:none;
@@ -23,13 +22,13 @@
 	-o-user-select:none;
 	user-drag:none;
 	box-sizing:border-box!important;
-}
+} */
 
-body{
+/* body{
 		font-family: Roboto, Sans-serif;
         overflow: hidden;
         width: 100%;
-	}
+	} */
 
 #container{
 	width:100%;
@@ -86,7 +85,7 @@ a{
 	outline-color: none;
 
 }
-nav{
+.nav-product-wrapper{
 	width: 140px;
 	height: 50px;
 	position: absolute;
@@ -195,7 +194,7 @@ p.quote:nth-child(2){
     font-weight: 600;
 }
 .active{
-	background: yellow;
+	/* background: yellow; */
 }
 .img{
 	width: 100%;
@@ -399,10 +398,10 @@ p.quote:nth-child(2){
                 Consumer
             </p>
             </div>
-            <nav>
+            <div class="nav-product-wrapper">
               <a id="leftBtn" class="prev"><i class="fa fa-arrow-left"></i></a>
               <a id="rightBtn" class="next"><i class="fa fa-arrow-right"></i></a>
-            </nav>
+</div>
           </div>
         </div>
         <div id="bg">

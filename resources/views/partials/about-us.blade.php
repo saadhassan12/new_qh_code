@@ -121,6 +121,15 @@
 
             .contentLeft .row {
                 grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+            }
+            .container .card .imgBx {
+                position: relative !important;
+            }
+              .container .card .imgBx img,{
+                position: absolute;
             }
 
             .contentLeft .row .imgWrapper {
@@ -269,20 +278,16 @@
             padding: 10px 15px 10px 15px;
             border-radius: 5px;
         }
-
         @media (max-width: 992px) {
             .container {
                 width: 100%;
                 flex-direction: column;
                 align-items: center;
-
             }
-
             .container .card {
                 width: 100%;
                 height: 100%;
             }
-
         }
 
         @media (max-width: 760px) {
@@ -290,7 +295,6 @@
                 max-width: 300px;
                 flex-direction: column;
             }
-
             .container .card .imgBx,
             .container .card:hover .imgBx {
                 width: 100%;
@@ -302,7 +306,7 @@
 
             .container .card .imgBx img,
             .container .card:hover .imgBx img {
-                max-width: 100px
+                /* max-width: 100px */
             }
 
             .container .card .content {

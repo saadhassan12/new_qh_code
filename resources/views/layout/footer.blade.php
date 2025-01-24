@@ -29,6 +29,23 @@
     .whatsapp-float i {
         line-height: 50px;
     }
+    @media(max-width: 768px) {
+        iframe {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 200px !important;
+    max-height: 100px !important;
+    }
+
+}
+@media (max-width: 992px) {
+    iframe {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 200px !important;
+    max-height: 100px !important;
+    }
+}
 </style>
 <!--information-starts-->
 

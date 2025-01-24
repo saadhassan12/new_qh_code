@@ -128,6 +128,40 @@
     /* Semi-transparent overlay */
     z-index: 1;
   }
+  .offcanvas-backdrop.show {
+    opacity: 0.2;
+}
+@media only screen and (max-width: 768px) {
+  .top-video-section{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    min-height: 500px;
+    margin: auto;
+  }
+  .top-video-section video{
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .controls div {
+    padding: 12px 40px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 5px;
+    border-radius: 10px;
+    background-color: #005b96;
+    text-align: center;
+    width: 150px !important;
+  }
+}
 </style>
 
 <body>
@@ -191,13 +225,13 @@
       <div class="col-md-6">
         <div class="slider" id="professional-slider">
           <div class="slide" data-slide="1">
-            <img src="{{ asset('/assets/images/home/perf.jpg') }}" alt="Slide 1">
+            <img src="{{ asset('/assets/images/home/batten1.jpg') }}" alt="Slide 1">
           </div>
           <div class="slide" data-slide="2">
-            <img src="{{ asset('/assets/images/home/Panel_light.webp') }}" alt="Slide 2">
+            <img src="{{ asset('/assets/images/home/spot1.jpg') }}" alt="Slide 2">
           </div>
           <div class="slide" data-slide="3">
-            <img src="{{ asset('/assets/images/home/tubel.jpg') }}" alt="Slide 3">
+            <img src="{{ asset('/assets/images/home/panel2.jpg') }}" alt="Slide 3">
           </div>
         </div>
         <div class="controls">
