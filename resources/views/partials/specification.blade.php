@@ -60,20 +60,6 @@
                         <button class="btn btn-outline-secondary" type="button" id="button-increment">+</button>
                     </div>
                 </div>
-                <div>
-                    <p class="quintity mt-4">Select Model</p>
-                    <div>
-                        <button class="btn select-modal-btn-dropdown dropdown-toggle" type="button" id="modelDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Models
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="modelDropdown">
-                            @foreach ($specifications as $product)
-                            <li><a class="dropdown-item" href="#">{{$product->type}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
             </div>
             <div class="mt-4">
                 <button class="cart" id="add-to-cart" data-product-id="{{ $product->id }}">Add to Cart</button>

@@ -50,9 +50,7 @@ class Product extends Model
         return null;
     }
     public function specification()
-    {
-        
-            return $this->hasMany(Specification::class,'product_model');
-        
+    {   
+     return $this->hasMany(Specification::class,'product_model');
     }
 }

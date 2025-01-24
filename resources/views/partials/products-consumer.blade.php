@@ -105,7 +105,7 @@
             <h1>Consumer</h1>
         </div>
         <!-- Image -->
-        <img src="{{ asset('/assets/images/consumer/banner.jpg') }}" alt="Cley Pendant">
+        <img src="{{ asset('/assets/images/consumer/perfessional-consumer.jpg') }}" alt="Cley Pendant">
     </div>
 </div>
 

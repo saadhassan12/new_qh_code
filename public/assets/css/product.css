@@ -87,6 +87,9 @@
         font-size: 14px;
     }
 
+    .offcanvas-backdrop.show {
+        opacity: 0.2;
+    }
     /* Container adjustments */
     .container {
         max-width: 1200px;

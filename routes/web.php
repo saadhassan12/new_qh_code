@@ -170,7 +170,8 @@ Route::controller(SpecificationController::class)->prefix('specification')->grou
     Route::get('/detail/{id}', 'detail')->name('detail');
 });
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-Route::post('/cart/save', action: [CartController::class, 'save'])->name('cart.save');
+Route::post('/cart/save', [CartController::class, 'save'])->name('cart.save');
 Route::delete('/order/{id}', [CartController::class, 'deleteOrder'])->name('order.delete');
 Route::get('/checkout', [CartController::class, 'checkout']);
 Route::post('/checkout/save', [CartController::class, 'store'])->name('checkout.store');
+Route::get('/viewcart', [CartController::class, 'viewcart']);

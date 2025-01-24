@@ -11,6 +11,7 @@ class CartController extends Controller
     //
     public function addToCart(Request $request)
     {
+
         $validated = $request->validate([
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
@@ -25,6 +26,7 @@ class CartController extends Controller
             'description' =>  $validated['description'],
             'specifications_type' =>  $validated['specifications_type'],
             'cap_type' =>  $validated['cap_type'],
+            'ip_address' => $request->ip(),
         ]);
         return response()->json(['message' => 'Product added to cart successfully!', 'order' => $order]);
     }
@@ -72,4 +74,14 @@ class CartController extends Controller
         $data =  Checkout::create($request->all());
         return redirect()->back()->with('success', 'Checkout data saved successfully!');
     }
+    public function viewcart() {
+
+        $userIp = request()->ip();
+                    $pendingOrders = Order::leftJoin('products', 'orders.product_id', '=', 'products.id')
+                    ->where('orders.status', 'pending')
+                    ->where('orders.ip_address', $userIp)
+                    ->get();
+        return view ('partials.view-cart-page',compact('pendingOrders'));
+    }
+
 }

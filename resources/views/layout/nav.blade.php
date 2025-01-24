@@ -137,6 +137,7 @@
             top: 5px;
             right: 5px;
         }
+
     }
 
     .navbar-toggler-icon {
@@ -253,6 +254,10 @@
         font-size: 12px;
         font-weight: 400;
     }
+
+    .offcanvas-backdrop.show {
+        opacity: 0.2;
+    }
 </style>
 <section class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -303,7 +308,11 @@
                         <div id="search-results" class="dropdown-menu" style="display: none;"></div>
                     </div>
                     @php
-                    $pendingOrders = \App\Models\Order::where('status', 'pending')->get();
+                    $userIp = request()->ip();
+                    $pendingOrders = \App\Models\Order::leftJoin('products', 'orders.product_id', '=', 'products.id')
+                    ->where('orders.status', 'pending')
+                    ->where('orders.ip_address', $userIp)
+                    ->get();
                     @endphp
                     <div class="cart-icon position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <i class="fas fa-shopping-cart fa-2x"></i>
@@ -324,22 +333,31 @@
     <div class="offcanvas-body">
         <div class="container">
             <div class="row">
+                @foreach($pendingOrders as $order)
                 <div class=" col-md-12 cart-item">
-                    <img src="/assets/images/QH-logo-remove.png" alt="Product Image">
+                    <img src="{{ asset('storage/images/products/' . $order->image_url) }}" alt="Product Image">
                     <div class="cart-details">
-                        <h2 class="heading-content mt-3">Product Name</h2>
-                        <p class="moadl-number">AO357T-SML-227</p>
-                        <p class="size">Size: S</p>
+                        <h2 class="heading-content mt-3"> {{ $order->product_model }}</h2>
+                        <p class="size">{{ ucfirst($order->status) }}</p>
                         <p class="item-total">Item Total</p>
                     </div>
                     <div class="remove-section">
                         <div class="price">Rs. 14,999</div>
-                        <i class="fa-solid fa-trash-can text-center"></i>
+                        <form action="{{ route('order.delete', $order->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"> <i class="fa-solid fa-trash-can text-center"></i></button>
+                        </form>
+
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
+    <a href="/viewcart" class="btn btn-primary mb-2" style="margin-left: 7px;margin-right: 7px;"> View Cart Page</a>
+    <a href="/checkout" class="btn btn-primary mb-3" style="margin-left: 7px;margin-right: 7px;"> Check Out </a>
+
 </div>
 
 <!-- Bootstrap JS (ensure it’s included in your project) -->
