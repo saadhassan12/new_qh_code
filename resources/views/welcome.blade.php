@@ -133,20 +133,22 @@
 }
 @media only screen and (max-width: 768px) {
   .top-video-section{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    min-height: 500px;
-    margin: auto;
-  }
+    position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        min-height: 185px;
+        top: 90px;
+        z-index: -1;
+}
   .top-video-section video{
     position: absolute;
-    top: 17%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
   }
   .controls div {
     padding: 12px 40px;

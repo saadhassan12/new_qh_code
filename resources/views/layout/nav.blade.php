@@ -129,13 +129,20 @@
         }
 
         .cart-icon i {
-            font-size: 1.5rem;
+            width: 55px;
+        height: 30px;
+        object-fit: cover;
         }
 
         .cart-count {
             font-size: 12px;
             top: 5px;
             right: 5px;
+        }
+        .search-bar{
+            width: 100%;
+        margin-top: 5px;
+        padding: 0px 2px
         }
 
     }
@@ -258,6 +265,7 @@
     .offcanvas-backdrop.show {
         opacity: 0.2;
     }
+    
 </style>
 <section class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -265,9 +273,20 @@
             <a class="navbar-brand" href="/">
                 <img src="/assets/images/QH-logo-remove.png" alt="" style="width: 150px;" class="img-fluid">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button 
+                class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbarContent" 
+                aria-controls="navbarContent" 
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav m-auto web-links gap-3">
                     <li class="web-link-li"><a href="/">Home</a></li>
@@ -302,7 +321,7 @@
                     <li class="web-link-li"><a href="{{ route('support') }}">Support</a></li>
                 </ul>
 
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center search-bar">
                     <div class="search-bar me-3">
                         <input type="text" id="search-input" placeholder="Search..." onkeyup="searchProducts()">
                         <div id="search-results" class="dropdown-menu" style="display: none;"></div>
@@ -371,3 +390,15 @@
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- navtogle button -->
+
+<script>
+    document.addEventListener('click', function (event) {
+        // Close the navbar when clicking on a link or outside of it
+        const navbar = document.querySelector('.navbar-collapse');
+        if (navbar.classList.contains('show') && !event.target.closest('.navbar-toggler')) {
+            const toggler = document.querySelector('.navbar-toggler');
+            toggler.click();
+        }
+    });
+</script>

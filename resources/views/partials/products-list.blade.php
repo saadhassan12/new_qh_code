@@ -42,6 +42,29 @@
         padding: 20px;
 
     }
+    @media only screen and (max-width: 768px) {
+        .banner{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        }
+        .banner-content h1 {
+    color: #005b96 !important;
+    font-size: 50px !important;
+    margin-bottom: 10px !important;
+    font-weight: 700 !important;
+}
+.custom-card{
+ width: 100%;
+ border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100% !important
+    
+
+    }
+}
 
     .banner-content h1 {
         color: #005b96;

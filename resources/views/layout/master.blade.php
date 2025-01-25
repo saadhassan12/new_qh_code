@@ -9,7 +9,7 @@
 <body style ="overflow-x: hidden; width: 100%;">
     @include('layout.nav')
     {{--content starts here--}}
-    <div class="container-fluid p-0">
+    <div class="container-fluid">
     @yield('content')
     </div>
     @include('layout.footer')

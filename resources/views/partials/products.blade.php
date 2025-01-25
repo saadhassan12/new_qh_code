@@ -269,6 +269,34 @@ p.quote:nth-child(2){
 	background-position: center;
 	background-repeat: no-repeat;
 }
+@media (max-width: 768px) {
+    #holder {
+        padding: 10px;
+    }
+
+    #text {
+        padding: 15px;
+    }
+
+    p.quote {
+        font-size: 18px;
+    }
+
+    .nav-product-wrapper a {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .img {
+        max-width: 300px;
+    }
+
+    p.quote {
+        font-size: 16px;
+    }
+}
 
 @media screen and (max-width:700px){
 
@@ -289,7 +317,7 @@ p.quote:nth-child(2){
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: red;
+	/* background: red; */
 	margin: auto;
 }
 .img{
@@ -310,7 +338,7 @@ p.quote:nth-child(2){
 	height: 100%;
 	float: right;
 	position: relative;
-	background: blue;
+	/* background: blue; */
 }
 #text{
 	width: 90%;

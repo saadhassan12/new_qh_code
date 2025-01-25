@@ -12,6 +12,27 @@
             margin-bottom: 18px;
             font-weight: 600;
         }
+        @media(max-width: 768px) {
+            h1 {
+            font-size: 27px;
+            color: #000;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 15px !important;
+            color: #333 !important;
+            font-weight: 400 !important;
+            text-align: justify !important;
+        }
+        .form-container{
+            background-color: var(--e-global-color-vamtam_accent_5) !important;
+    margin: 0px 26px 0px 0px !important;
+    padding: 0px 050px 24px 40px !important;
+    border-radius: 40px 40px 40px 40px !important;
+    box-shadow: 10px 7px 0px 0px #005b96 !important;
+        }
+        }
 
         p {
             font-size: 18px;
@@ -27,10 +48,10 @@
 
         .form-container {
             background-color: var(--e-global-color-vamtam_accent_5) !important;
-            margin: 0px 0100px 0px 0px !important;
-            padding: 0px 050px 24px 40px !important;
-            border-radius: 40px 40px 40px 40px !important;
-            box-shadow: 10px 7px 0px 0px #005b96 !important;
+            margin: 0px 0100px 0px 0px;
+            padding: 0px 050px 24px 40px;
+            border-radius: 40px 40px 40px 40px;
+            box-shadow: 10px 7px 0px 0px #005b96;
 
         }
 
@@ -121,6 +142,9 @@
                     and <br>explore how our team can contribute to your success.
                 </p>
             </div>
+            <div class="conainer">
+
+          
             <div class="row">
                 <div class="col-md-6">
                     <div class="map-container mb-4">
@@ -190,6 +214,7 @@
                         </form>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

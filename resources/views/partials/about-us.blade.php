@@ -281,7 +281,7 @@
         @media (max-width: 992px) {
             .container {
                 width: 100%;
-                flex-direction: column;
+                /* flex-direction: column; */
                 align-items: center;
             }
             .container .card {
@@ -292,7 +292,7 @@
 
         @media (max-width: 760px) {
             .container .card {
-                max-width: 300px;
+                width: 100%;
                 flex-direction: column;
             }
             .container .card .imgBx,
