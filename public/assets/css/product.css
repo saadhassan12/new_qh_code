@@ -185,6 +185,21 @@
         margin-top: 20px;
     }
 
+    @media (max-width: 768px) {
+        .specification-wrapper {
+            margin-top: 20px;
+            overflow-x: scroll !important;
+        }
+        .product-image{
+             padding: 15px 40px !important;
+        }
+        .custom-card-wrapper{
+            display: flex !important;
+                transition: transform 0.5s ease-in-out !important;
+                gap: 20px !important;
+                flex-direction: column !important;
+        }
+    }
     .table {
         width: 100%;
         margin: 0;

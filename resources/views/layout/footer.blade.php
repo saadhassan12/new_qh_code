@@ -21,6 +21,9 @@
         /* Ensure it stays above other elements */
         text-decoration: none;
     }
+    a{
+        text-decoration: none !important;
+    }
 
     .whatsapp-float:hover {
         background-color: #1ebd5b;

@@ -13,6 +13,19 @@
             font-weight: 600;
         }
         @media(max-width: 768px) {
+            .contact-wrapper{
+                padding: 0px 33px;
+            }
+            .map-container{
+                width: 100% !important;
+                height:auto !important
+            }
+            iframe {
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 390px;
+        min-height: 245px !important;
+    }
             h1 {
             font-size: 27px;
             color: #000;
@@ -143,8 +156,6 @@
                 </p>
             </div>
             <div class="conainer">
-
-          
             <div class="row">
                 <div class="col-md-6">
                     <div class="map-container mb-4">
@@ -156,7 +167,7 @@
                             loading="lazy">
                         </iframe>
                     </div>
-                    <div class="row">
+                    <div class="row contact-wrapper">
                         <div class="col-md-6">
                             <p class="number-text">Phone number:</p>
                             <h5 class="number-mail">042 37510711</h5>

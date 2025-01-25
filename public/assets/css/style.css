@@ -1981,7 +1981,7 @@ table td{
 .infor-left ul li a p{
     font-size: 12px;
     margin: 0;
-    color: #c3ddf0;
+    color: #c3ddf0 !important;
 }
 
 .infor-left h4{
