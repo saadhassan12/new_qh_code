@@ -221,10 +221,10 @@ div {
   margin-left: -10px;
   width: 250px;
 }
-.search-bar{
+/* .search-bar{
     padding: 0 10px;
     width: 250px;
-}
+} */
 
 .search-bar input[type="text"] {
     width: 100%;

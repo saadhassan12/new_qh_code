@@ -33,6 +33,14 @@
         line-height: 50px;
     }
     @media(max-width: 768px) {
+        .infor-left ul{
+                padding: 0;
+                margin: 18px 0 0 0;
+            }
+            .information .infor-top h3{
+                color: #fff;
+                margin-top: 20px;
+            }
         iframe {
     width: 100% !important;
     height: 100% !important;

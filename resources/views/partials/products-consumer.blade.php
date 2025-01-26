@@ -8,7 +8,6 @@
         align-items: center;
         justify-content: space-around;
         background-color: #f3f3f3;
-        /* Light background shade */
         padding: 20px;
         width: 100%;
 
